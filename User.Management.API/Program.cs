@@ -23,7 +23,9 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 // Add config for required email
 builder.Services.Configure<IdentityOptions>(options => options.SignIn.RequireConfirmedEmail = true);
 
-// Authentincation
+builder.Services.Configure<DataProtectionTokenProviderOptions>(options => options.TokenLifespan= TimeSpan.FromMinutes(1));
+
+// Authentication
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
